@@ -1,0 +1,300 @@
+STL Revisions
+----------------------------
+CHANGES
+----------------------------
+v1.0.1 - 24 Nov 2017
+* #17 - Add Edit UI in Admin users/outlets
+* #18 - Update width of Logos in Ticket Transaction
+* #20 - Restrict quick-sidebar (Section must be visible only in admin side)
+* #22 - Add Payout button in header-nav Outlet dashboard
+* #14 - Create Edit/Delete Function for Users and Outlets (Outlet owners)
+* #7 - Payout Section: payout winners will reset each day
+* #25 - Outlet Edit
+* #26 - Add assigned teller in outlet view in Admin
+* #27 - Remove anonymous functions in Routes
+* #28 - Refactor Data\Transaction and display ticket numbers in Transactions Page in Admin.
+
+v1.0.2 - 25 Nov 2017
+* #29 - Do not display deactivated users in assigned tellers column in Outlets
+* #24 - Fix process draw sales/Daily sales transactions
+* #30 - Display negative value in Daily Sales
+* #31 - Refactor and fix calculations for Transactions summary
+
+v1.0.3 - 25 Nov 2017
+* #33 - Exclude from payouts calculation in outlets payout made from admin.
+
+v1.0.4 - 25 Nov 2017
+* #34 - URGENT: Fix winning bet input.
+
+v1.0.5 - 25 Nov 2017
+* #35 - Edit Pares game to access trailing zeros when dealing with numbers below 10.
+
+v1.0.6 - 27 Nov 2017
+* #32 - Disallow Repeating numbers per ticket.
+* #36 - Solve counting of winners and list winning bets.
+* #49 - Outlet calculations correction
+
+v1.0.7 - 27 Nov 2017
+* #51 - Fix refresh browser js code.
+* #37 - Display previous results
+* #41 - Edit winning result
+
+v1.0.8 - 2 Dec 2017
+* #44 - Fix problem when sending of bet failure.
+* #52 - Add 0 before 1-9 in pares
+* #53 - Change the winning price of swertres to 500.
+
+v1.0.9 - 3 Dec 2017
+* #55 - Update price back to 450
+
+v1.0.10 - 18 Dec 2017
+* #19 - Display Winners, Payouts on outlet dashboards
+* #58 - Create refresh code when editing results
+* #72 - Remove remember and forgot password in login
+* #73 - Time In and Time Out
+* #70 - Admin dashboard Total Sales widget
+* #74 - Encrypt session and expire it on close.
+
+v1.0.11 - 21 Dec 2017
+* #75 - Fix Winning Input
+* #76 - Apply Rambled multiplier on input
+
+v1.0.12 - 22 Dec 2017
+* #77 - Advance bet only the same day.
+* #78 - Changes route from welcome page to login page.
+
+v1.0.13 - 16 Jan 2018
+* #78 - Add new game SwertresSTL
+* #71 - Daily sales bug when having payout.
+* #42 - Transactions filtering
+* #80 - Make previous results a datepicker
+
+v1.0.14 - 18 Jan 2018
+* #81 - PHP 500 limit for each bet in each transaction on all outlets.
+
+v1.0.15 - 21 Jan 2018
+* #83 - Change winning to PHP. 500 for Swertres
+
+v1.0.16 - 23 Jan 2018
+* #82 - Make the cut-off time 15 mins
+
+v1.0.17 - 30 Jan 2018
+* #84 - Fix bug when not refreshed and Draw time is already late.
+* #79 - 3A8 PDF download
+
+v1.0.18 - 18 Feb 2018
+* #50 - SMS Feature
+* #86 - Fix login routes
+
+v1.0.19 - 25 Feb 2018
+* #66 - Activity history per outlet (Sales)
+
+v1.0.20 - 3 Mar 2018
+#87 - Tool to export db automatically
+#85 - Disable and Re-enable Betting when printing
+
+v1.0.21 - 5 Mar 2018
+#88 - Fix bet disabling when printing sales.
+
+v1.0.22 - 8 Mar 2018
+#91 - Create an activate/deactivate button for outlets.
+#92 - Force cancel option.
+
+v1.0.23 - 10 Mar 2018
+#93 - Add remove option in outlets.
+
+v1.0.24 - 13 Mar 2018
+#90 - Enable external scripts to run for backup purposes.
+
+v1.0.25 - 19 Mar 2018
+#94 - Get the top bets per draw.
+
+v1.0.26 - 02 Apr 2018
+#96 - Display all highest bets from 11pm, 4pm, and 9pm.
+#100 - Hot-number-like feature with total amount of bets and number of bets.
+#98 - Optimize Reports page.
+#99 - Optimize Printing
+
+v1.0.27 - 03 Apr 2018
+#105 - Change sorting to bet count in Hot Numbers
+
+v1.0.28 - 04 Apr 2018
+#106 - Set default hot numbers to 2000.
+
+v1.0.29 - 06 Apr 2018
+#104 - Optimize Dashboard
+#107 - Fix bug in summary report.
+
+v1.0.39 - 07 Apr 2018
+#110 - Hot Numbers Search bar.
+
+v1.0.31 - 13 Apr 2018
+#112 - Enable Swertres STL and make some adjustments
+#113 - Fix bug when deleting an outlet.
+
+v1.0.32 - 15 Apr 2018
+#114 - Cancel page
+#101 - Change positions for actions buttons
+#115 - Transfer window.print to the buttom of HTML
+
+v1.0.33 - 23 Apr 2018
+#95 - Offline Syncing
+
+v1.0.34 - 30 Apr 2018
+#119 - Hotfix: Only 3a8 can cancel.
+
+v1.0.35 - 6 May 2018
+#124 - Rapid Changes.
+
+v1.0.36 - 14 May 2018
+#95 - Offline Syncing improvements. Additional API endpoints for offline sync added.
+
+v1.0.37 - 20 May 2018
+#122 - Build outlet notification system for announcements from admin office.
+#126 - Reprint Monitoring.
+#127 - Searches monitoring.
+
+v1.0.38 - 29 May 2018
+#128 - Winners and Sales Aggregation
+
+v1.0.39 - 30 May 2018
+URGENT - Hotfix
+
+v1.0.39 - 31 May 2018
+URGENT - Hotfix
+
+v1.0.40 - 31 May 2018
+#129 - transaction page pagination
+
+v1.0.41 - 07 June 2018
+#130 - Hotfix - 3a8 cannot disable and edit.
+
+v1.0.42 - 09 Jun 2018
+#131 - Implement number sold-out.
+#132 - Remove Temp Scripts.
+#133 - use caching for sold out.
+#134 - Sort hotnumbers by amount.
+
+v1.0.43 - 11 Jun 2018
+#135 - Separate Swertres and Swer3 logic in sold out.
+#136 - Separate Swertres and Swer3 hotnumbers.
+
+v1.0.44 - 15 Jun 2018
+#137 - Cache sales calculations in admin dashboard.
+
+v1.0.45 - 2 Jul 2018
+#143 - Remove Pares Iligan
+#144 - Add Swer3 Local
+#145 - Temporarily disable caching - Iligan
+#146 - Make exception in Caching for total amount.
+
+v1.0.46 - 8 Jul 2018
+#154 - Add UI changes in Transactions Page.
+#108 - Mobile Application API
+
+v1.0.47 - 11 Jul 2018
+#152 - for full access admin separate sales coming from outlet and mobile.
+
+v1.0.48 - 14 Jul 2018
+#156 - Fix Daily Sales.
+#157 - Fix Sales Accuracy.
+
+v1.0.49 - 18 Jul 2018
+#158 - Remove Admin/Teller name in payouts table on the Teller side.
+
+v1.0.50 - 20 Jul 2018
+#161 - Fix EOD Sales API Issue
+#155 - Do not see separation on read-only admin.
+
+v1.0.51 - 24 Jul 2018
+#162 - Fix transactions pagination on filter.
+#8-mobile -  print draw sales report (API)
+#163 - Add draw date and time in main transaction page.
+
+v1.0.52 - 28 Jul 2018
+#164 - Change DallySalesUsher to DailySales
+
+v1.0.53 - 12 Aug 2018
+#166 - Adjust to bet cut off the minimum time to allow per draw sales printing
+#165 - Add 'View user logins' for admins
+
+v1.0.54 - 13 Sep 2018
+#170 - mobile: bet placed the previous day
+
+v1.0.55 - 15 Sep 2018
+#168 - Add separation for ushers in mobile outlets.
+
+v1.0.56 - 16 Sep 2018
+#171 - Add names to separated sales in mobile
+
+v1.0.57 - 19 Sep 2018
+#172 - Separate sales of all ushers.
+
+v1.0.58 - 21 Sep 2018
+#167 - Add calculation panel for sales with range input ang comprehensive reporting.
+
+v1.0.59 - 24 Sep 2018
+#173 - Added usher calculation on date range calculation.
+
+v1.0.60 - 27 Sep 2018
+#174 - Apply socket in dashboard.
+
+v1.0.61 - 2 Oct 2018
+#175 - Add showcase in api
+
+v1.0.62 - 6 Oct 2018
+#180 - Fix socket on previous sales
+#179 - Remove sold-out.
+#181 - Fix rambled logic when no unique digits are present.
+#182 - Remove env calls in view.
+
+v1.0.63 - 12 Oct 2018
+#184 - Change price to 450.
+#183 - Uncaptured offline tickets from mobile
+
+v1.0.64 - 16 Oct 2018
+#185 - Remove inactive outlets in summary
+#186 - Separate sales by usher usernames.
+
+v1.0.65 - 17 Oct 2018
+#188 - Fix bug on zero total transactions
+#187 - Enable socket in transaction.
+
+v1.0.66 - 6 Nov 2018
+#189 - Create winnings (payouts) date range.
+#191 - Fix cancellation bug with socket.
+
+v1.0.67 - 22 Nov 2018
+#193 - Make user hierarchy.
+#192 - Update ticket ID system to 16-character alphanumeric ID
+#196 - Message Notification Feature
+
+v1.0.68 - 28 Nov 2018
+#197 - Make admin capable of betting with outlet and user selection.
+
+v1.0.69 - 8 Dec 2018
+#198 - Hide ushers in outlet assignments.
+#176 - Create configuration table.
+
+v1.0.70 - 13 Dec 2018
+#199 - Make less commission 10%
+
+v1.0.71 - 16 Jan 2019
+#201 - Fix bug on auto-enabling users.
+
+v1.0.72 - 23 Jan 2019
+#202 - config table in getting usher percentage value.
+
+v1.0.73 - 25 Jan 2019
+#203 - Create email notification for logins.
+
+v1.0.74 - 29 Jan 2019
+#204 - Add tellers and ushers login summary email.
+#205 - Add sales summary email.
+
+v1.0.75 - 31 Jan 2019
+#206 - Fix email notifications.
+
+v1.0.76 - 14 Feb 2019
+#207 - Add another email notification.
+#208 - Refactor migration.
