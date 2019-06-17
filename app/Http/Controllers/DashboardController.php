@@ -50,6 +50,7 @@ use App\System\Games\SwertresSTLLocal\SwertresSTLLocalGame;
 use App\Events\CalculatedSalesDataEvent;
 use App\Events\TransactionSocketEvent;
 use App\System\Utils\UserUtils;
+use App\System\Utils\ConfigUtils;
 
 class DashboardController extends Controller
 {
@@ -143,6 +144,25 @@ class DashboardController extends Controller
             $tmp['users'] = $users;
             $select_outlets_json[$outlet->id()] = $tmp;
         }
+        
+        // --- New dashboard processes ---
+        
+        // Total Number of Winners
+        $totalNumberOfWinnings = 0;
+        foreach ($numberOfWinnings as $win) {
+            $totalNumberOfWinnings += $win;
+        }
+        
+        // Total Number of Tickets
+        $totalNumberOfTickets = 0;
+        foreach ($numberOfTickets as $ticket) {
+            $totalNumberOfTickets += $ticket;
+        }
+        
+        // For remittance
+        $decimal = (float) ConfigUtils::get('REMITTANCE_PERCENTAGE_DECIMAL');
+        $amount = $cachingService->getTotalAmountByDate($carbonObj) * (float) ConfigUtils::get('REMITTANCE_PERCENTAGE_DECIMAL');
+        $remittance = $cachingService->getTotalAmountByDate($carbonObj) - $amount;
 
         return view('admin.dashboard', [
             'winnings' => $this->getWinnings(true, $draw_date),
@@ -170,6 +190,13 @@ class DashboardController extends Controller
             'available_schedules' => $this->generateTransactionInputStrings($timeslots),
             'games' => GamesFactory::getGames(),
             'select_outlets_json' => $select_outlets_json,
+            
+            // New dashboard variables
+            'earnings' => $cachingService->getTotalAmountByDate($carbonObj) - $winningAllocation,
+            'total_number_of_winnings' => $totalNumberOfWinnings,
+            'total_number_of_tickets' => $totalNumberOfTickets,
+            'remittance' => $remittance,
+            'our_commission' => $amount,
         ]);
     }
 

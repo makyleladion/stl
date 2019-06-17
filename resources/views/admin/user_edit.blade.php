@@ -1,133 +1,146 @@
 @extends('layouts.main') @section('content')
 
-  <div class="page-layout carded full-width">
+                    <section id="about">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="content-header">Edit User Profile</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title" id="basic-layout-form"><i class="ft-user"></i> Personal Information </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="px-3">
+                                            <form class="form" action="{{ route('update-user') }}" method="post">
+                                                {{ csrf_field() }}
+                                                <div class="form-body">
+                                                    <div class="row">
+                                                        <input type="hidden" name="user_id" value="{{ $user->id() }}" />
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="firstName">First Name</label>
+                                                                <input type="text" name="firstName" id="firstName" class="form-control" aria-describedby="firstname" value="{{ $user->name() }}" />
+                                                            </div>
+                                                        </div>  
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="lastName">Last Name</label>
+                                                                <input type="text" name="lastName" id="lastName" class="form-control" aria-describedby="lastname" />
+                                                            </div>
+                                                        </div> 
+                                                        <div class="col-md-12">
+                                                            @if ($user->role() == $user::ROLE_TELLER)
+                                                            <div class="form-group">
+                                                                <label for="outlet-assigned">Outlet Assigned</label>
+                                                                <select name="outlet-assigned" id="outlet-assigned" class="form-control">
+                                                                    <option value="0">Main Office</option>
+                                                                    @foreach ($outlets as $outlet)
+                                                                    <option value="{{ $outlet->id() }}">{{ $outlet->name() }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="role">Role</label>
+                                                                <select id="role" name="role" class="form-control">
+                                                                    <option value="{{ ucfirst($user->role()) }}" selected="" disabled="">{{ ucfirst($user->role()) }}</option>
+                                                                    <option value="Coordinator">Coordinator</option>
+                                                                    <option value="Teller">Teller</option>
+                                                                    <option value="Usher ">Usher</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="percentage">Percentage</label>
+                                                                <select id="percentage" name="percentage" class="form-control">
+                                                                    <option value="7" selected="">7</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="select-coordinator">Select Coordinator</label>
+                                                                <select id="select-coordinator" name="select-coordinator" class="form-control">
+                                                                    <option value="1" selected="">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4 ">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>                                                        
+                                                    </div>
+                                                </div>
 
-    <div class="top-bg bg-secondary"></div>
+                                                <div class="form-actions right">
+                                                    <button type="button" class="btn btn-outline-primary round"><i class="fa fa-check mr-1"></i> Save Changes </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- CONTENT -->
-    <div class="page-content">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title" id="basic-layout-colored-form-control"><i class="ft-info"></i> User Account </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="px-3">                      
 
-      <!-- HEADER -->
-      <div class="header bg-secondary text-auto row no-gutters align-items-center justify-content-between">
+                                            <form class="form">
+                                                <div class="form-body">
+                                                    <div class="row">
+                                                      <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="username">Username</label>
+                                                                <input type="text" name="username" id="username" class="form-control" aria-describedby="username" />
+                                                            </div>
+                                                        </div>        
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="email">E-mail</label>
+                                                                <input type="email" name="email" id="email" class="form-control" aria-describedby="user email" value="{{ $user->email() }}" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="userinput1">Current Password</label>
+                                                                <input type="password" id="userinput1" class="form-control"  name="name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="userinput2">New Password</label>
+                                                                <input type="password" id="userinput2" class="form-control"  name="company">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="userinput3">Confirm New Password</label>
+                                                                <input type="password" id="userinput3" class="form-control"  name="username">
+                                                            </div>
+                                                        </div>
+                                                    </div>    
+                                                </div>
 
-        <!-- APP TITLE -->
-        <div class="col-12 col-sm">
+                                                <div class="form-actions right">
+                                                    <button type="button" class="btn btn-outline-primary round"><i class="fa fa-check mr-1"></i> Save Changes </button>
+                                                </div>
+                                            </form>
 
-          <div class="logo row no-gutters align-items-start">
-            <div class="logo-icon mr-3 mt-1">
-              <i class="icon-account-plus s-6"></i>
-            </div>
-            <div class="logo-text">
-              <div class="h4">Edit {{ ucfirst($user->role()) }}: {{ $user->name() }}</div>
-            </div>
-          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-        </div>
-        <!-- / APP TITLE -->
-
-      </div>
-      <!-- / HEADER -->
-
-      <div class="page-content-card">
-        <div class="col-12 col-sm-6 col-xl-12 p-12">
-          <div class="widget widget1 card p-6">
-
-              @if (\Session::has('user-success'))
-                <div class="alert alert-success" role="alert">{{ session('user-success') }}</div>
-              @endif
-
-              @if (\Session::has('error-flash'))
-                <div class="alert alert-danger" role="alert">{{ session('error-flash') }}</div>
-              @endif
-
-              @if ($errors->any())
-                <div class="alert alert-danger">
-                  <ul>
-                    @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                    @endforeach
-                  </ul>
-                </div>
-              @endif
-
-            <form action="{{ route('update-user') }}" method="post">
-              {{ csrf_field() }}
-              <input type="hidden" name="user_id" value="{{ $user->id() }}" />
-              <div class="form-group">
-                <input type="text" name="name" id="name" class="form-control" aria-describedby="outlet name" value="{{ $user->name() }}" />
-                <label>Name</label>
-              </div>
-
-              <div class="form-group">
-                <input type="email" name="email" id="email" class="form-control" aria-describedby="outlet tags" value="{{ $user->email() }}" />
-                <label>Email</label>
-              </div>
-
-              <div class="form-group">
-                <input type="password" name="password" id="password" class="form-control" aria-describedby="outlet tags" />
-                <label>Replace Password</label>
-              </div>
-							
-			  			@if ($user->role() == $user::ROLE_TELLER)
-              <div class="form-group">
-                <label>Assign Outlet</label>
-                <select name="default_outlet" class="form-control">
-                  @foreach ($outlets as $outlet)
-                  <option value="{{ $outlet->id() }}"{{ ($default_outlet->id == $outlet->id()) ? ' selected' : '' }}>{{ $outlet->name() }}</option>
-                  @endforeach
-                </select>
-              </div>
-              @endif
-              
-              <div class="form-group">
-                <label>Assign Superior</label>
-                <select name="user_superior" id="user_superior" class="form-control">
-                	@if (auth()->user()->is_superadmin)
-                	<option value="0" id="no-superior">None</option>
-                	@endif
-                  @foreach ($adminUsers as $u)
-                  <option value="{{ $u->id }}" {{ ($user->getSuperior() && $u->id == $user->getSuperior()->id) ? 'selected' : '' }}>{{ $u->name }}</option>
-                  @endforeach
-                </select>
-              </div>
-              
-              @if ($user->role() == $user::ROLE_ADMIN)
-              <div class="form-group">
-                <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="is_read_only" value="1" class="custom-control-input"<?php echo $user->isReadOnly() ? ' checked' : '' ?>>
-                    <span class="custom-control-indicator fuse-ripple-ready"></span>
-                	<span class="label">Read-only</span>
-              	</label>
-              </div>
-              @else
-              <div class="form-group">
-                <label class="custom-control custom-checkbox">
-                    <input type="checkbox" name="is_usher" value="1" class="custom-control-input"<?php echo $user->isUsher() ? ' checked' : '' ?>>
-                    <span class="custom-control-indicator fuse-ripple-ready"></span>
-                	<span class="label">Is usher</span>
-              	</label>
-              </div>
-              @endif
-
-              <button type="submit" class="btn btn-secondary">SAVE</button>
-              @if (auth()->user()->id != $user->id())
-              <a href="{{ route('delete-user', ['user_id' => $user->id()]) }}" class="btn btn-danger delete-btn">DELETE</a>
-              @endif
-            </form>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- / CONTENT -->
-  </div>
-
-  <script type="text/javascript" src="{{url('/assets/js/apps/e-commerce/product/product.js?v=1')}}"></script>
-  <script>
-	$(document).ready(function() {
-		$(".delete-btn").click(function(){
-			return confirm("Are you sure you want to delete this user?");
-		});
-	});
-	</script>
 @endsection

@@ -1,157 +1,121 @@
 @extends('layouts.main') @section('content')
-
-<div class="page-layout carded full-width">
-
-    <div class="top-bg bg-secondary"></div>
-
-    <!-- CONTENT -->
-    <div class="page-content">
-
-        <!-- HEADER -->
-        <div class="header bg-secondary text-auto row no-gutters align-items-center justify-content-between">
-
-            <!-- APP TITLE -->
-            <div class="col-12 col-sm">
-
-                <div class="logo row no-gutters align-items-start">
-                    <div class="logo-icon mr-3 mt-1">
-                        <i class="icon-home-outline s-6"></i>
-                    </div>
-                    <div class="logo-text">
-                        <div class="h4">New Outlet</div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- / APP TITLE -->
-
-        </div>
-        <!-- / HEADER -->
-
-        <div class="page-content-card">
-            <div class="col-12 col-sm-6 col-xl-12 p-12">
-                <div class="widget widget1 card p-6">
-
-                    @if (\Session::has('outlet-success'))
-                    <div class="alert alert-success" role="alert">{{ session('outlet-success') }}</div>
-                    @endif @if (\Session::has('error-flash'))
-                    <div class="alert alert-danger" role="alert">{{ session('error-flash') }}</div>
-                    @endif @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
-                    
-                    <script>
-                        x = false;
-
-                        function Check() {
-                            if (x) {
-                                document.getElementById("div1").style.display = 'inline';
-                                document.getElementById("div2").style.display = 'none';
-                                x = false;
-                            } else {
-                                document.getElementById("div1").style.display = 'none';
-                                document.getElementById("div2").style.display = 'inline';
-                                x = true;
-                            }
-
-                        }
-                    </script>
-
-                    <label class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check" onclick="Check()">
-                        <span class="custom-control-indicator fuse-ripple-ready"></span>
-                        <span class="label"> Already have an account?</span>
-                    </label>
-                    <div id="div1">
-                        <form action="{{ route('create-outlet') }}" method="post">
-
-                            {{ csrf_field() }}
-                            
-                            {!! Form::hidden('user-is-exist', 0); !!}
-
-                            <div class="form-group">
-                                <input type="text" name="name" id="name" class="form-control" aria-describedby="outlet name" />
-                                <label>Owner Name</label>
+                    <section id="add-new-outlet">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="content-header">Add New Outlet</div>
                             </div>
+                        </div>
+                        <script>
+                            $(function () {
+                                $('#section2').hide();
+                                $("#checkbox1").click(function () {
+                                    if ($(this).is(":checked")) {
+                                        $('#section1').hide();
+                                        $('#section2').show();
+                                    } else {
+                                        $('#section1').show();
+                                        $('#section2').hide();
+                                    }
+                                });
+                            });
+                        </script>
+                        <div class="row">                            
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title" id="basic-layout-form"><i class="ft-user"></i> Outlet Information </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="px-3">
+                                            <form class="form">
+                                                <div class="form-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12 mb-1">
+                                                            <div class="custom-control custom-checkbox m-0">
+                                                                <input type="checkbox" class="custom-control-input" id="checkbox1">
+                                                                <label class="custom-control-label" for="checkbox1">Already have an account?</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <section id="section2">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="owner-email">Owner E-mail</label>
+                                                                    <input type="text" id="email" class="form-control"  name="email">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="outlet-name">Outlet Name</label>
+                                                                    <input type="text" id="outletname" class="form-control"  name="outletname">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="outlet-address">Address</label>
+                                                                    <input type="text" id="address" class="form-control"  name="address">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                    <section id="section1">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="owner-name">Owner Name</label>
+                                                                    <input type="text" id="ownername" class="form-control"  name="ownername">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="outlet-address">Address</label>
+                                                                    <input type="text" id="address" class="form-control"  name="address">
+                                                                </div>
+                                                            </div>
+                                                        </div>                                                        
 
-                            <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control" aria-describedby="outlet tags" />
-                                <label>Owner Email</label>
+                                                        <h4 class="form-section"><i class="ft-file-text"></i> Owner Information</h4>
+
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="owner-email">Owner E-mail</label>
+                                                                    <input type="text" id="email" class="form-control"  name="email">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="password">New Password</label>
+                                                                    <input type="text" id="password" class="form-control"  name="password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <label for="confirm-password">Confirm New Password</label>
+                                                                    <input type="text" id="confirm-password" class="form-control"  name="confirm-password">
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                    </section>   
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-1">
+                                                            <div class="custom-control custom-checkbox m-0">
+                                                                <input type="checkbox" class="custom-control-input" id="checkbox2">
+                                                                <label class="custom-control-label" for="checkbox2">Is the new outlet affiliated to our Company?</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>                     
+                                                </div>
+
+                                                <div class="form-actions right">
+                                                    <button type="button" class="btn btn-outline-primary round"><i class="fa fa-check mr-1"></i> Save Changes </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control" aria-describedby="outlet tags" />
-                                <label>Password</label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="outlet-name" class="form-control" aria-describedby="outlet name" />
-                                <label>Outlet Name</label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="address" class="form-control" aria-describedby="outlet tags" />
-                                <label>Address</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="is-affiliated" value="1" class="custom-control-input">
-                                    <span class="custom-control-indicator fuse-ripple-ready"></span>
-                                    <span class="label">Is the new outlet affiliated to our Company?</span>
-                                </label>
-                            </div>
-
-                            <button type="submit" class="btn btn-secondary">SAVE</button>
-
-                        </form>
-                    </div>
-                    <div id="div2" style="display:none">
-                        <form action="{{ route('create-outlet') }}" method="post">
-
-                            {{ csrf_field() }}
-                            
-                            {!! Form::hidden('user-is-exist', 1); !!}
-
-                            <div class="form-group">
-                                <input type="email" name="email" id="email" class="form-control" aria-describedby="outlet tags" />
-                                <label>Owner Email</label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="outlet-name" class="form-control" aria-describedby="outlet name" />
-                                <label>Outlet Name</label>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" name="address" class="form-control" aria-describedby="outlet tags" />
-                                <label>Address</label>
-                            </div>
-                            <div class="form-group">
-                                <label class="custom-control custom-checkbox">
-                                    <input type="checkbox" name="is-affiliated" value="1" class="custom-control-input">
-                                    <span class="custom-control-indicator fuse-ripple-ready"></span>
-                                    <span class="label">Is the new outlet affiliated to our Company?</span>
-                                </label>
-                            </div>
-
-                            <button type="submit" class="btn btn-secondary">SAVE</button>
-
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- / CONTENT -->
-</div>
-
-<script type="text/javascript" src="{{url('/assets/js/apps/e-commerce/product/product.js?v=1')}}"></script>
-
+                        </div>
+                    </section>
 @endsection

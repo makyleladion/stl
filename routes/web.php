@@ -64,6 +64,7 @@ Route::get('/print/receipt/{ticket_id}', 'PrintController@receipt')->name('recei
 Route::get('/print/multiple-receipts/{tickets_str}/{pos}', 'PrintController@multipleReceipts')->name('multiple-receipts');
 Route::get('/print/sales-print-receipts/{pos}', 'PrintController@salesPrintReceipts')->name('sales-print-receipts');
 
+Route::get('/settings', 'SettingsController@index')->name('settings');
 Route::get('/settings/sms-notification', 'SettingsController@smsNotification')->name('sms-notification');
 Route::post('/settings/sms-notification', 'SettingsController@postSaveAdminPhoneNumber')->name('save-sms-notification');
 Route::get('/settings/bet-reactivation', 'SettingsController@betReactivation')->name('bet-reactivation');

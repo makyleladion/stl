@@ -1,150 +1,84 @@
-@extends('layouts.main')
-
-@section('content')
-
-<div class="page-layout carded full-width">
-
-    <div class="top-bg bg-secondary"></div>
-
-    <!-- CONTENT -->
-    <div class="page-content">
-
-        <!-- HEADER -->
-        <div class="header bg-secondary text-auto row no-gutters align-items-center justify-content-between">
-
-            <!-- APP TITLE -->
-            <div class="col-12 col-sm">
-            
-            		@if (\Session::has('error-flash'))
-                <div class="alert alert-danger" role="alert">{{ session('error-flash') }}</div>
-                @endif
-
-                <div class="logo row no-gutters align-items-start">
-
-                    <div class="logo-icon mr-3 mt-1">
-                        <i class="icon-cards-outline s-6"></i>
+            @extends('layouts.main')
+                @section('content')
+                    <div class="row">
+                        <div class="col-md-12 mt-1 mb-1">
+                            <div class="form-actions clearfix">
+                                <div class="float-left">
+                                    <div class="content-header">Cancelled Tickets Page</div>
+                                    <p class="content-sub-header">Total Cancelled Tickets: {{ $total_transactions }}</p>
+                                </div>
+                                <div class="float-right">
+                                    <div class="my-4 pr-3">
+                                        <a href="#" class="py-1 h6" data-toggle="modal" data-target="#cancelTicket"><i class="icon-docs font-medium-5 mr-2"></i>Cancel Ticket</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="logo-text">
-                        <div class="h4">Transactions with Canceled Tickets</div>
-                        <div class="">Total Transactions: {{ $total_transactions }}</div>
-                    </div>
-
-                </div>
-            </div>
-            <!-- / APP TITLE -->
-
-        </div>
-        <!-- / HEADER -->
-
-        <div class="page-content-card">
-
-            <div id="e-commerce-orders-table_wrapper" class="dataTables_wrapper no-footer">
-                <div class="dataTables_scroll">
-
-                    <div class="dataTables_scrollBody">
-                         <table id="e-commerce-orders-table" class="table dataTable">
-
-                                <thead>
-
-                                    <tr>
-
-                                        <th>
-                                            <div class="table-header">
-                                                <span class="column-title">ID</span></div>
-                                        </th>
-
-                                        <th>
-                                            <div class="table-header">
-                                                <span class="column-title">Transaction ID</span>
+                    <section id="extended">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">List of Cancelled Transactions</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <table class="table table-responsive-md text-left">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Ticket No.</th>
+                                                        <th>Outlet</th>
+                                                        <th>Teller</th>
+                                                        <th>Bets</th>
+                                                        <th>Cancelled by</th>
+                                                        <th>Cancelled Date</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($transactions as $transaction)
+                                                    <tr>
+                                                        <td>{{ $transaction->id(true) }}</td>
+                                                        <td>{!! $transaction->tickets(true) !!}</td>
+                                                        <td>{{ $transaction->outletName() }}</a></td>
+                                                        <td>{{ $transaction->teller() }}</a></td>
+                                                        <td>{{ $transaction->betsString() }}</td>
+                                                        <td>{{ $transaction->canceledBy() }}</td>
+                                                        <td>{{ $transaction->cancelDates() }}</td>
+                                                        <td>
+                                                            <a href="{{ route('single-transaction', ['transaction_id' => $transaction->getTransaction()->id, 'outlet_id' => $transaction->getOutlet()->id]) }}" class="info p-0" data-original-title="" title="">
+                                                                <i class="ft-file-text font-large-1 mr-2"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                            <div class="row" id="table-pagination">
+                                                <div class="col-sm-12 col-md-5">
+                                                    <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-7">
+                                                    <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                                                        <ul class="pagination">
+                                                            <li class="paginate_button page-item previous disabled"><a href="#"tabindex="0" class="page-link">Previous</a></li>
+                                                            <li class="paginate_button page-item active"><a href="#" tabindex="0" class="page-link">1</a></li>
+                                                            <li class="paginate_button page-item "><a href="#" tabindex="0" class="page-link">2</a></li>
+                                                            <li class="paginate_button page-item "><a href="#" tabindex="0" class="page-link">3</a></li>
+                                                            <li class="paginate_button page-item "><a href="#" tabindex="0" class="page-link">4</a></li>
+                                                            <li class="paginate_button page-item "><a href="#" tabindex="0" class="page-link">5</a></li>
+                                                            <li class="paginate_button page-item "><a href="#" tabindex="0" class="page-link">6</a></li>
+                                                            <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" tabindex="0" class="page-link">Next</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </th>
-                                        
-                                        <th>
-                                            <div class="table-header">
-                                                <span class="column-title">Ticket ID</span>
-                                            </div>
-                                        </th>
-
-                                        <th>
-                                          <div class="table-header">
-                                            <span class="column-title">Outlet</span>
-                                          </div>
-                                        </th>
-
-                                        <th>
-                                          <div class="table-header">
-                                            <span class="column-title">Teller</span>
-                                          </div>
-                                        </th>
-
-                                        <th>
-                                          <div class="table-header">
-                                            <span class="column-title">Customer Name</span>
-                                          </div>
-                                        </th>
-
-                                        <th>
-                                            <div class="table-header">
-                                                <span class="column-title">Bets</span>
-                                            </div>
-                                        </th>
-
-                                        <th>
-                                            <div class="table-header">
-                                                <span class="column-title">Canceled By</span>
-                                            </div>
-                                        </th>
-
-                                        <th>
-                                            <div class="table-header">
-                                                <span class="column-title">Cancel Date</span>
-                                            </div>
-                                        </th>
-
-                                        <th>
-                                            <div class="table-header">
-                                                <span class="column-title">Actions</span></div>
-                                        </th>
-
-                                    </tr>
-                                </thead>
-
-                            <tbody>
-                                @foreach ($transactions as $transaction)
-                                <tr>
-                                    <td>{{ $transaction->id(true) }}</td>
-                                    <td>{{ $transaction->transactionNumber() }}</td>
-                                    <td>{!! $transaction->tickets(true) !!}</td>
-                                    <td><a href="{{ route('outlet-dashboard', ['outlet_id' => $transaction->getOutlet()->id]) }}">{{ $transaction->outletName() }}</a></td>
-                                    <td><a href="{{ route('edit-user', ['user_id' => $transaction->tellerObj()->id]) }}">{{ $transaction->teller() }}</a></td>
-                                    <td>{{ $transaction->customerName('none') }}</td>
-                                    <td>{{ $transaction->betsString() }}</td>
-                                    <td>{{ $transaction->canceledBy() }}</td>
-                                    <td>{{ $transaction->cancelDates() }}</td>
-                                    <td>
-                                        <a href="{{ route('single-transaction', ['transaction_id' => $transaction->getTransaction()->id, 'outlet_id' => $transaction->getOutlet()->id]) }}" class="btn btn-default btn-sm">View</a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                         </table>
-                    </div>
-                </div>
-                <div class="dataTables_info" id="e-commerce-orders-table_info" role="status" aria-live="polite">
-                      <div id="pagi_page-content" class="pagi_page-content">Page {{$page}} of {{$total_pages}}</div> 
-                </div>
-                <div class="dataTables_paginate paging_simple_numbers" id="e-commerce-orders-table_paginate">
-               		<a href="{{ route('all-transactions-canceled', ['page' => $prev]) }}{{ !is_null($query) ? '?' . $query : '' }}" class="paginate_button previous" id="e-commerce-orders-table_previous">Previous</a>
-                	<a href="{{ route('all-transactions-canceled', ['page' => $next]) }}{{ !is_null($query) ? '?' . $query : '' }}" class="paginate_button next" aria-controls="e-commerce-orders-table" data-dt-idx="4" tabindex="0" id="e-commerce-orders-table_next">Next</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!-- / CONTENT -->
-</div>
-
-<script type="text/javascript" src="{{ url('/assets/js/apps/e-commerce/orders/orders.js?v=1')}}"></script>
-@include('inc.winningResult')
-@endsection
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                @endsection

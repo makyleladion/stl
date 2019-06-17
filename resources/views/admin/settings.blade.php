@@ -1,66 +1,48 @@
 @extends('layouts.main') @section('content')
 
-<div class="content">
-    <div id="e-commerce-product" class="page-layout simple tabbed">
+                    <section id="settings-page">
+                        <div class="row">
+                            <div class="col-md-12 mt-1 mb-1">
+                                <div class="content-header">Settings Page</div>
+                                <p class="content-sub-header"></p>                    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">System Settings</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
 
-        <!-- HEADER -->
-        <div class="page-header bg-secondary text-auto row no-gutters align-items-center justify-content-between p-6">
+                                            @include('admin.settings.navbar')
+                                            
+                                            <div class="tab-content px-1">
 
-            <div class="row no-gutters align-items-center">
-
-               <div class="logo-icon mr-3 mt-1">
-                    <i class="icon-settings s-6"></i>
-                </div>
-
-                <div class="logo-text">
-                    <div class="h4">SMS Notification</div>
-                </div>
-
-            </div>
-
-        </div>
-        <!-- / HEADER -->
-
-        <!-- CONTENT -->
-        <div class="page-content">
-
-            @include('admin.settings.navbar')
-
-            <div class="tab-content">
-
-                <div class="tab-pane fade show active" id="general-tab-pane" role="tabpanel" aria-labelledby="general-tab">
-
-                    <div class="card p-10">
-
-                        <form>
-
-                            <div class="form-group row">
-                                <label for="setBettingTime" class="col-sm-3 col-form-label" data-toggle="tooltip" data-placement="right" title="Set Time to Re-enable betting">Time to Re-enable betting</label>
-                                <div class="col-sm-8">
-                                    <input class="form-control" type="time" value="06:00:00" id="setBettingTime"/>
+                                                <div role="tabpanel" class="tab-pane active" id="basic-settings-tab" aria-expanded="true" aria-labelledby="basic-settings-tab">
+                                                    <div class="px-3 pt-2">
+                                                        <form class="form form-horizontal">
+                                                            <div class="form-body">
+                                                                <div class="form-group row">
+                                                                    <label class="col-md-4 label-control" for="setBettingTime">Time to Re-enable betting: </label>
+                                                                    <div class="col-md-8">
+                                                                        <input type="text" id="setBettingTime" class="form-control" type="time" value="06:00:00" name="setBettingTime">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-actions right">
+                                                                <button type="button" class="btn btn-outline-primary round"><i class="fa fa-check mr-1"></i> Save Changes </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <button type="submit" class="btn btn-secondary">Save Changes</button>
-
-                        </form>
-                    </div>
-
-
-                </div>
-
-
-
-            </div>
-
-
-        </div>
-        <!-- / CONTENT -->
-    </div>
-
-
-    <script type="text/javascript" src="{{url('/assets/js/apps/e-commerce/product/product.js?v=1')}}"></script>
-</div>
-
+                        </div>
+                    </section>  
 
 @endsection

@@ -1,5 +1,62 @@
 @extends('layouts.main') @section('content')
 
+
+                    <!--Transactions Page starts-->                    
+                    <section id="transactions-single-page">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="content-header">Transaction ID: <small>{{ $transaction->transactionNumber() }}</small></div>
+                                <p class="content-sub-header">Total Bet Amount: &#8369; {{ number_format($transaction->amount(), 2, '.', ',') }} | {{ $transaction->transactionDateTime()->toDayDateTimeString() }}</p>
+                            </div>                        
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">(STL-1) Pagente / {{ $row['teller'] }}</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="card-block">
+                                            <table class="table table-responsive-lg text-left">
+                                                <thead>
+                                                        <tr>
+                                                            <th>Bet ID</th>
+                                                            <th>Ticket ID</th>
+                                                            <th>Game</th>                                                        
+                                                            <th>Type</th>                                                            
+                                                            <th>Bet Number</th>
+                                                            <th>Bet Amount</th>
+                                                            <th>Win Price</th>
+                                                            <th>Cancelled</th>
+                                                            <th>Draw Date/Time</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="text-justify">
+                                                        @foreach ($transaction_array as $row)
+                                                        <tr>
+                                                            <td>{{ $row['transaction_id'] }}</td>
+                                                            <td>{{ $row['ticket_number'] }}</td>
+                                                            <td>{{ $row['bet_game'] }}</td>
+                                                            <td>{{ $row['bet_type'] }}</td>
+                                                            <td>{{ $row['bet_number'] }}</td>
+                                                            <td>&#8369; {{ money_format('PHP %i', $row['bet_amount']) }}</td>
+                                                            <td>&#8369; {{ number_format($row['bet_price'], 2, '.', ',') }}</td>
+                                                            <td>{!! ($row['is_cancelled']) ? '<i class="icon icon-check"></i>' : '' !!}</td>
+                                                            <td> @if ($row['draw_datetime_is_passed'])
+                                                                <span class="text-warning">{{ $row['draw_datetime'] }}</span> @else
+                                                                <span class="text-success">{{ $row['draw_datetime'] }}</span> @endif
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </section>
+
 <div class="page-layout carded full-width">
 
     <div class="top-bg bg-secondary"></div>
