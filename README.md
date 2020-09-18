@@ -1,6 +1,6 @@
 # Small Town Lottery System
 
-By **Joshua Paylaga** and **The Team**
+By ** Dakiri Team**
 
 This system is built to handle the operations of the Small Town Lottery betting game in the Philippines and report back insights and statistics of the operation in real-time. Here are the features included in the system:
 
